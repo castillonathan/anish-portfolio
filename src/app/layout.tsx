@@ -17,6 +17,11 @@ export const metadata: Metadata = {
   title: "Anish Singhal — Graphic & Visual Designer",
   description:
     "Portfolio of Anish Singhal, a Graphic and Visual Designer specializing in branding, social media design, merchandise, digital design, and creative visual communication.",
+
+  alternates: {
+    canonical: "https://anish-portfolio-beige.vercel.app",
+  },
+
   openGraph: {
     title: "Anish Singhal — Graphic & Visual Designer",
     description:
@@ -30,6 +35,14 @@ export const metadata: Metadata = {
       },
     ],
     type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Anish Singhal — Graphic & Visual Designer",
+    description:
+      "Portfolio of Anish Singhal, a Graphic and Visual Designer specializing in branding, social media design, merchandise, digital design, and creative visual communication.",
+    images: ["/og-image.png"],
   },
 };
 
