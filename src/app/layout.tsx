@@ -14,6 +14,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://anish-portfolio-beige.vercel.app"),
+   verification: {
+    google: "c5RhLXF_5j9rFLoQKKqiuK2X0E-fVn1g9MP_G5y3PU0",
+  },
   title: "Anish Singhal — Graphic & Visual Designer",
   description:
     "Portfolio of Anish Singhal, a Graphic and Visual Designer specializing in branding, social media design, merchandise, digital design, and creative visual communication.",
