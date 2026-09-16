@@ -13,9 +13,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://anish-portfolio-beige.vercel.app"),
   title: "Anish Singhal — Graphic & Visual Designer",
   description:
     "Portfolio of Anish Singhal, a Graphic and Visual Designer specializing in branding, social media design, merchandise, digital design, and creative visual communication.",
+  openGraph: {
+    title: "Anish Singhal — Graphic & Visual Designer",
+    description:
+      "Portfolio of Anish Singhal, a Graphic and Visual Designer specializing in branding, social media design, merchandise, digital design, and creative visual communication.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Anish Singhal — Graphic & Visual Designer",
+      },
+    ],
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
