@@ -36,7 +36,7 @@ export default function ProjectCard({
             />
           ) : (
             <div className="flex h-full items-center justify-center">
-              <span className="text-sm uppercase tracking-[0.2em] text-black/40">
+              <span className="text-sm uppercase tracking-[0.2em] text-black/40 dark:text-white/40">
                 {project.title}
               </span>
             </div>
@@ -55,12 +55,12 @@ export default function ProjectCard({
   {project.title}
 </h3>
 
-    <p className="mt-2 text-xs font-medium uppercase tracking-[0.12em] text-black/40">
+    <p className="mt-2 text-xs font-medium uppercase tracking-[0.12em] text-black/40 dark:text-white/40">
   {project.client}
 </p>
   </div>
 
-  <span className="pt-1 text-lg font-medium tracking-[0.18em] text-black/45">
+  <span className="pt-1 text-lg font-medium tracking-[0.18em] text-black/45 dark:text-white/45">
   {project.year}
 </span>
 </div>

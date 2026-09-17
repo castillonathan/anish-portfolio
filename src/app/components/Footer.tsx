@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-black/10 px-6 py-10 md:px-10">
+    <footer className="border-t border-black/10 dark:border-white/10 px-5 sm:px-6 py-10 md:px-10">
       <div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 md:flex-row md:items-center">
 
         <div>
@@ -8,7 +8,7 @@ export default function Footer() {
             ANISH.
           </p>
 
-          <p className="mt-2 text-sm text-black/40">
+          <p className="mt-2 text-sm text-black/40 dark:text-white/40">
             © {new Date().getFullYear()} Anish Singhal. All rights reserved.
           </p>
         </div>
@@ -18,7 +18,7 @@ export default function Footer() {
             href="https://www.behance.net/art3mis_berlin"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-black/60 transition-opacity hover:opacity-50"
+            className="text-sm text-black/60 dark:text-white/60 transition-opacity hover:opacity-50"
           >
             Behance ↗
           </a>
@@ -27,7 +27,7 @@ export default function Footer() {
             href="https://www.instagram.com/_vision.with.variety_/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-black/60 transition-opacity hover:opacity-50"
+            className="text-sm text-black/60 dark:text-white/60 transition-opacity hover:opacity-50"
           >
             Instagram ↗
           </a>
@@ -36,7 +36,7 @@ export default function Footer() {
             href="https://www.linkedin.com/in/anish-singhal-291437191/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-black/60 transition-opacity hover:opacity-50"
+            className="text-sm text-black/60 dark:text-white/60 transition-opacity hover:opacity-50"
           >
             LinkedIn ↗
           </a>

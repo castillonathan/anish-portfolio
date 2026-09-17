@@ -49,11 +49,11 @@ export default async function ProjectPage({
       <div className="mx-auto max-w-7xl">
             <a
                  href="/#work"
-                className="mb-14 inline-flex text-sm font-medium text-black/45 transition-all duration-300 hover:translate-x-1 hover:text-black"
+                className="mb-14 inline-flex text-sm font-medium text-black/45 dark:text-white/45 transition-all duration-300 hover:translate-x-1 hover:text-black"
              >
                 ← Back to Work
              </a>
-        <p className="text-sm uppercase tracking-[0.25em] text-black/50">
+        <p className="text-sm uppercase tracking-[0.25em] text-black/50 dark:text-white/50">
           {project.client}
         </p>
 
@@ -64,7 +64,7 @@ export default async function ProjectPage({
 </Reveal>
 
         <Reveal delay={0.15}>
-  <p className="mt-6 max-w-2xl text-sm font-normal leading-[1.6] tracking-normal text-black/50 md:text-base">
+  <p className="mt-6 max-w-2xl text-sm font-normal leading-[1.6] tracking-normal text-black/50 dark:text-white/50 md:text-base">
     {project.description}
   </p>
 </Reveal>
@@ -72,28 +72,28 @@ export default async function ProjectPage({
 <Reveal delay={0.3}>
         <div className="mt-16 grid grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-4">
   <div>
-    <p className="text-xs uppercase tracking-wider text-black/40">
+    <p className="text-xs uppercase tracking-wider text-black/40 dark:text-white/40">
       Year
     </p>
     <p className="mt-3 font-medium tracking-[-0.01em]">{project.year}</p>
   </div>
 
   <div>
-    <p className="text-xs uppercase tracking-wider text-black/40">
+    <p className="text-xs uppercase tracking-wider text-black/40 dark:text-white/40">
       Role
     </p>
     <p className="mt-3 font-medium tracking-[-0.01em]">{project.role}</p>
   </div>
 
   <div>
-    <p className="text-xs uppercase tracking-wider text-black/40">
+    <p className="text-xs uppercase tracking-wider text-black/40 dark:text-white/40">
       Tools
     </p>
     <p className="mt-3 font-medium tracking-[-0.01em]">{project.tools}</p>
   </div>
 
   <div>
-    <p className="text-xs uppercase tracking-wider text-black/40">
+    <p className="text-xs uppercase tracking-wider text-black/40 dark:text-white/40">
       Items
     </p>
     <p className="mt-3 font-medium tracking-[-0.01em]">{items.length}</p>
@@ -120,12 +120,12 @@ export default async function ProjectPage({
 
     return (
       <Reveal key={item.id}>
-  <section className="border-t border-black/5 pt-12">
+  <section className="border-t border-black/5 dark:border-white/5 pt-12">
         <h2 className="mb-6 text-4xl font-bold leading-[0.95] tracking-[-0.04em] md:text-5xl">
           {item.title}
         </h2>
 
-        <p className="mb-10 max-w-2xl text-lg font-normal leading-[1.6] tracking-normal text-black/50">
+        <p className="mb-10 max-w-2xl text-lg font-normal leading-[1.6] tracking-normal text-black/50 dark:text-white/50">
   {item.description}
 </p>
 
@@ -160,7 +160,7 @@ export default async function ProjectPage({
   })}
 </div>
 
-<div className="mt-32 border-t border-black/10 pt-8">
+<div className="mt-32 border-t border-black/10 dark:border-white/10 pt-8">
   <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
 
     {(() => {
@@ -178,7 +178,7 @@ export default async function ProjectPage({
               href={`/work/${previousProject.slug}`}
               className="group"
             >
-              <span className="text-sm text-black/40">
+              <span className="text-sm text-black/40 dark:text-white/40">
                 Previous
               </span>
 
@@ -195,7 +195,7 @@ export default async function ProjectPage({
               href={`/work/${nextProject.slug}`}
               className="group text-right"
             >
-              <span className="text-sm text-black/40">
+              <span className="text-sm text-black/40 dark:text-white/40">
                 Next
               </span>
 

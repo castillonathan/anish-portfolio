@@ -79,3 +79,69 @@ export async function getProjectCover(projectId: number) {
 
   return null
 }
+export async function getVideos() {
+  const { data: videoAssets, error: videoError } = await supabase
+    .from('project_assets')
+    .select('*')
+    .eq('asset_type', 'video')
+    .order('display_order', { ascending: true })
+
+  if (videoError) {
+    console.error('Error fetching videos:', videoError)
+    return []
+  }
+
+  if (!videoAssets?.length) {
+    return []
+  }
+
+  const itemIds = [
+    ...new Set(videoAssets.map((asset) => asset.project_item_id)),
+  ]
+
+  const { data: items, error: itemError } = await supabase
+    .from('project_items')
+    .select('*')
+    .in('id', itemIds)
+
+  if (itemError) {
+    console.error('Error fetching video project items:', itemError)
+    return []
+  }
+
+  if (!items?.length) {
+    return []
+  }
+
+  const projectIds = [
+    ...new Set(items.map((item) => item.project_id)),
+  ]
+
+  const { data: projects, error: projectError } = await supabase
+    .from('projects')
+    .select('id, title, slug')
+    .in('id', projectIds)
+
+  if (projectError) {
+    console.error('Error fetching video projects:', projectError)
+    return []
+  }
+
+  return videoAssets.map((asset) => {
+    const item = items.find(
+      (item) => item.id === asset.project_item_id
+    )
+
+    const project = projects?.find(
+      (project) => project.id === item?.project_id
+    )
+
+    return {
+      ...asset,
+      project_item_title: item?.title ?? '',
+      project_id: project?.id ?? null,
+      project_title: project?.title ?? '',
+      project_slug: project?.slug ?? '',
+    }
+  })
+}

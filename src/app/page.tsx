@@ -13,17 +13,17 @@ export default function Home() {
       <main>
         <Hero />
 
-        <Work />
+          <Work />
 
         {/* Temporary Profile Section */}
         <section
   id="profile"
-  className="px-6 py-32 md:px-10"
+  className="px-5 py-24 sm:px-6 sm:py-32 md:px-10"
 >
   <div className="mx-auto max-w-7xl">
 
     <div className="mb-16">
-      <p className="text-sm uppercase tracking-[0.25em] text-black/50">
+      <p className="text-sm uppercase tracking-[0.25em] text-black/50 dark:text-white/50">
         Profile
       </p>
 
@@ -35,7 +35,7 @@ export default function Home() {
     <div className="grid gap-12 md:grid-cols-2">
 
       <div>
-        <p className="max-w-xl text-xl leading-[1.6] tracking-[-0.01em] text-black/65 md:text-2xl">
+        <p className="max-w-xl text-xl leading-[1.6] tracking-[-0.01em] text-black/65 dark:text-white/65 md:text-2xl ">
           I'm Anish Singhal, a multidisciplinary graphic and visual
           designer focused on creating meaningful visual experiences
           across branding, social media, merchandise, digital design,
@@ -46,11 +46,11 @@ export default function Home() {
       <div className="space-y-12">
 
         <div>
-          <p className="text-sm uppercase tracking-[0.2em] text-black/40">
+          <p className="text-sm uppercase tracking-[0.2em] text-black/40 dark:text-white/40">
             Expertise
           </p>
 
-          <p className="mt-4 text-base leading-[1.7] text-black/65 md:text-lg">
+          <p className="mt-4 text-base leading-[1.7] text-black/65 dark:text-white/65 md:text-lg ">
             Branding & Logo Design · Social Media Creatives · Poster &
             Flyer Design · Merchandise & T-shirt Graphics · Presentation
             & Pitch Deck Design · Vector Illustration · Typography &
@@ -59,18 +59,27 @@ export default function Home() {
         </div>
 
         <div>
-          <p className="text-sm uppercase tracking-[0.2em] text-black/40">
+          <p className="text-sm uppercase tracking-[0.2em] text-black/40 dark:text-white/40">
             Tools
           </p>
 
-          <p className="mt-4 text-base leading-[1.7] text-black/65 md:text-lg">
+          <p className="mt-4 text-base leading-[1.7] text-black/65 dark:text-white/65 md:text-lg ">
             Adobe Illustrator · Photoshop · Figma · Blender · After
             Effects · Premiere Pro
           </p>
         </div>
 
       </div>
-
+{/* Resume */}
+<div className="mt-10 sm:mt-16">
+  <a
+    href="/resume.pdf"
+    download="Anish-Singhal-Resume.pdf"
+    className="inline-flex items-center rounded-full bg-black px-12 py-6 text-lg font-bold text-white transition-all duration-300 hover:bg-black/80 dark:bg-white dark:text-black dark:hover:bg-white/80"
+  >
+    Download Resume
+  </a>
+</div>
     </div>
 
   </div>
@@ -83,7 +92,7 @@ export default function Home() {
 >
   <div className="mx-auto max-w-7xl">
 
-    <p className="text-sm uppercase tracking-[0.25em] text-black/50">
+    <p className="text-sm uppercase tracking-[0.25em] text-black/50 dark:text-white/50">
       Get in touch
     </p>
 
@@ -93,7 +102,7 @@ export default function Home() {
       together.
     </h2>
 
-    <p className="mt-8 max-w-lg text-lg leading-[1.6] text-black/55 md:text-xl">
+    <p className="mt-8 max-w-lg text-lg leading-[1.6] text-black/55 dark:text-white/55 md:text-xl ">
       Have a project, collaboration, or opportunity in mind?
       I'd love to hear about it.
     </p>
@@ -106,18 +115,18 @@ export default function Home() {
     anishsinghal2901@gmail.com
   </a>
 
-  <p className="mt-3 text-sm text-black/40">
+  <p className="mt-3 text-sm text-black/40 dark:text-white/40">
     Available for freelance projects, collaborations, and opportunities.
   </p>
 </div>
 
-    <div className="mt-24 flex flex-wrap gap-x-10 gap-y-5 border-t border-black/10 pt-10">
+    <div className="mt-24 flex flex-wrap gap-x-10 gap-y-5 border-t border-black/10 dark:border-white/10 pt-10">
 
       <a
         href="https://www.behance.net/art3mis_berlin"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-sm text-black/60 transition-colors hover:text-black"
+        className="text-sm text-black/60 dark:text-white/60 transition-colors hover:text-black dark:text-white"
       >
         Behance ↗
       </a>
@@ -126,7 +135,7 @@ export default function Home() {
         href="https://www.instagram.com/_vision.with.variety_/"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-sm text-black/60 transition-colors hover:text-black"
+        className="text-sm text-black/60 dark:text-white/60 transition-colors hover:text-black dark:text-white"
       >
         Instagram ↗
       </a>
@@ -135,7 +144,7 @@ export default function Home() {
         href="https://www.linkedin.com/in/anish-singhal-291437191/"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-sm text-black/60 transition-colors hover:text-black"
+        className="text-sm text-black/60 dark:text-white/60 transition-colors hover:text-black dark:text-white"
       >
         LinkedIn ↗
       </a>
