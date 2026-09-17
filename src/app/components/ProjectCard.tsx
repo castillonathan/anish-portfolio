@@ -31,7 +31,7 @@ export default function ProjectCard({
           {project.cover_image ? (
             <img
               src={project.cover_image}
-              alt={project.title}
+              alt={`${project.title} project cover`}
               className="h-full w-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.04]"
             />
           ) : (

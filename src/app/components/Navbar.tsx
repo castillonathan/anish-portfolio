@@ -90,8 +90,9 @@ const toggleDarkMode = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-sm text-white transition-transform duration-300 hover:scale-105 dark:bg-white dark:text-black md:hidden"
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-sm text-white transition-transform duration-300 hover:scale-105 dark:bg-white dark:text-black md:hidden"
         >
           {menuOpen ? "×" : "☰"}
         </button>
