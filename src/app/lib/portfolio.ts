@@ -59,6 +59,16 @@ export async function getProjectAssets(projectItemId: number) {
 }
 
 export async function getProjectCover(projectId: number) {
+  const projects = await getProjects()
+
+  const project = projects.find(
+    (project) => project.id === projectId
+  )
+
+  if (project?.cover_image) {
+    return project.cover_image
+  }
+
   const items = await getProjectItems(projectId)
 
   if (!items.length) {
@@ -69,7 +79,7 @@ export async function getProjectCover(projectId: number) {
     const assets = await getProjectAssets(item.id)
 
     const imageAsset = assets.find(
-      (asset) => asset.asset_type === 'image' && asset.file_url
+      (asset) => asset.asset_type === "image" && asset.file_url
     )
 
     if (imageAsset?.file_url) {

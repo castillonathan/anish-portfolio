@@ -1,11 +1,12 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import ProjectCard from "./ProjectCard"
 
 type Category = {
   id: number
   name: string
+  slug: string
   cover_image?: string | null
 }
 
@@ -42,6 +43,54 @@ export default function CategoryFilter({
     number | "videos" | null
   >(null)
 
+  // Read category from the URL when the page loads
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const categorySlug = params.get("category")
+
+    if (!categorySlug) {
+      setActiveFilter(null)
+      return
+    }
+
+    if (categorySlug === "videos") {
+      setActiveFilter("videos")
+      return
+    }
+
+    const category = categories.find(
+      (category) => category.slug === categorySlug
+    )
+
+    if (category) {
+      setActiveFilter(category.id)
+    }
+  }, [categories])
+
+  const updateFilter = (filter: number | "videos" | null) => {
+    setActiveFilter(filter)
+
+    const url = new URL(window.location.href)
+
+    if (filter === null) {
+      url.searchParams.delete("category")
+    } else if (filter === "videos") {
+      url.searchParams.set("category", "videos")
+    } else {
+      const category = categories.find(
+        (category) => category.id === filter
+      )
+
+      if (category) {
+        url.searchParams.set("category", category.slug)
+      }
+    }
+
+    url.hash = "work"
+
+    window.history.pushState({}, "", url.toString())
+  }
+
   const activeCategory =
     typeof activeFilter === "number" ? activeFilter : null
 
@@ -57,11 +106,11 @@ export default function CategoryFilter({
       {/* Category Buttons */}
       <div className="mb-10 flex flex-wrap gap-2 sm:mb-14">
         <button
-          onClick={() => setActiveFilter(null)}
-          className={`rounded-full border px-6 py-2.5 text-sm font-medium transition-all duration-300 ${
+          onClick={() => updateFilter(null)}
+          className={`rounded-full border px-5 py-3 text-sm font-medium transition-all duration-300 ${
             activeFilter === null
               ? "border-black bg-black text-white"
-              : "border-black/15 dark:border-white/15 bg-transparent hover:bg-black hover:text-white dark:border-white/15 dark:hover:bg-white dark:hover:text-black"
+              : "border-black/15 bg-transparent hover:bg-black hover:text-white dark:border-white/15 dark:hover:bg-white dark:hover:text-black"
           }`}
         >
           All
@@ -70,11 +119,11 @@ export default function CategoryFilter({
         {categories.map((category) => (
           <button
             key={category.id}
-            onClick={() => setActiveFilter(category.id)}
-            className={`rounded-full border px-6 py-2.5 text-sm font-medium transition-all duration-300 ${
+            onClick={() => updateFilter(category.id)}
+            className={`rounded-full border px-5 py-3 text-sm font-medium transition-all duration-300 ${
               activeFilter === category.id
                 ? "border-black bg-black text-white"
-                : "border-black/15 dark:border-white/15 bg-transparent hover:bg-black hover:text-white dark:border-white/15 dark:hover:bg-white dark:hover:text-black"
+                : "border-black/15 bg-transparent hover:bg-black hover:text-white dark:border-white/15 dark:hover:bg-white dark:hover:text-black"
             }`}
           >
             {category.name}
@@ -82,11 +131,11 @@ export default function CategoryFilter({
         ))}
 
         <button
-          onClick={() => setActiveFilter("videos")}
-          className={`rounded-full border px-6 py-2.5 text-sm font-medium transition-all duration-300 ${
+          onClick={() => updateFilter("videos")}
+          className={`rounded-full border px-5 py-3 text-sm font-medium transition-all duration-300 ${
             activeFilter === "videos"
               ? "border-black bg-black text-white"
-              : "border-black/15 dark:border-white/15 bg-transparent hover:bg-black hover:text-white dark:border-white/15 dark:hover:bg-white dark:hover:text-black"
+              : "border-black/15 bg-transparent hover:bg-black hover:text-white dark:border-white/15 dark:hover:bg-white dark:hover:text-black"
           }`}
         >
           Videos
@@ -99,7 +148,7 @@ export default function CategoryFilter({
           {categories.map((category) => (
             <button
               key={category.id}
-              onClick={() => setActiveFilter(category.id)}
+              onClick={() => updateFilter(category.id)}
               className="group block w-full text-left"
             >
               <article>
@@ -118,7 +167,7 @@ export default function CategoryFilter({
                     </div>
                   )}
 
-                  <div className="absolute right-5 top-5 flex h-12 w-12 translate-y-2 items-center justify-center rounded-full bg-white text-xl dark:bg-black dark:text-white opacity-0 shadow-sm transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:rotate-6 group-hover:opacity-100">
+                  <div className="absolute right-5 top-5 flex h-12 w-12 translate-y-2 items-center justify-center rounded-full bg-white text-xl opacity-0 shadow-sm transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:rotate-6 group-hover:opacity-100 dark:bg-black dark:text-white">
                     ↗
                   </div>
                 </div>
@@ -135,35 +184,36 @@ export default function CategoryFilter({
               </article>
             </button>
           ))}
+
           {/* Videos Category Card */}
-        <button
-           onClick={() => setActiveFilter("videos")}
-           className="group block w-full text-left"
-        >
-   <article>
-      <div className="relative aspect-[4/3] overflow-hidden rounded-[2.5rem] bg-black">
-       <div className="flex h-full items-center justify-center">
-         <span className="text-6xl font-bold tracking-[-0.06em] text-white md:text-8xl">
-             ▶
-          </span>
-       </div>
+          <button
+            onClick={() => updateFilter("videos")}
+            className="group block w-full text-left"
+          >
+            <article>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[2.5rem] bg-black">
+                <div className="flex h-full items-center justify-center">
+                  <span className="text-6xl font-bold tracking-[-0.06em] text-white md:text-8xl">
+                    ▶
+                  </span>
+                </div>
 
-      <div className="absolute right-5 top-5 flex h-12 w-12 translate-y-2 items-center justify-center rounded-full bg-white text-xl opacity-0 shadow-sm transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:rotate-6 group-hover:opacity-100">
-            ↗
-       </div>
-     </div>
+                <div className="absolute right-5 top-5 flex h-12 w-12 translate-y-2 items-center justify-center rounded-full bg-white text-xl opacity-0 shadow-sm transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:rotate-6 group-hover:opacity-100">
+                  ↗
+                </div>
+              </div>
 
-    <div className="mt-6 flex items-center justify-between">
-      <h3 className="text-2xl font-semibold tracking-[-0.02em] transition-opacity duration-300 group-hover:opacity-60">
-        Videos
-      </h3>
+              <div className="mt-6 flex items-center justify-between">
+                <h3 className="text-2xl font-semibold tracking-[-0.02em] transition-opacity duration-300 group-hover:opacity-60">
+                  Videos
+                </h3>
 
-      <span className="text-sm text-black/40">
-        View videos ↗
-      </span>
-             </div>
-         </article>
-    </button>
+                <span className="text-sm text-black/40">
+                  View videos ↗
+                </span>
+              </div>
+            </article>
+          </button>
         </div>
       )}
 
@@ -177,18 +227,14 @@ export default function CategoryFilter({
               index={index}
             />
           ))}
-          
         </div>
       )}
 
       {/* Videos */}
       {activeFilter === "videos" && (
         <div className="grid gap-x-8 gap-y-20 md:grid-cols-2">
-          {videos.map((video, index) => (
-            <div
-              key={video.id}
-              className="group"
-            >
+          {videos.map((video) => (
+            <div key={video.id} className="group">
               <article>
                 <div className="relative aspect-video overflow-hidden rounded-[2.5rem] bg-black">
                   <video
@@ -215,7 +261,6 @@ export default function CategoryFilter({
               </article>
             </div>
           ))}
-          
         </div>
       )}
 
